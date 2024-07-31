@@ -1,7 +1,6 @@
 plugins {
     id 'java'
-    // Если Lombok используется, раскомментируйте следующую строку
-    // id "io.freefair.lombok" version "5.3.0"
+    id 'io.freefair.lombok' version '6.6.2' // Плагин Lombok
 }
 
 group = 'ru.netology'
@@ -19,14 +18,15 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.0'
     testImplementation 'com.codeborne:selenide:6.17.2'
     testImplementation 'com.github.javafaker:javafaker:1.0.2'
-    // Если Lombok используется в проекте, раскомментируйте следующие строки
-    // implementation 'org.projectlombok:lombok:1.18.24'
-    // annotationProcessor 'org.projectlombok:lombok:1.18.24'
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
     testRuntimeOnly 'org.slf4j:slf4j-simple:2.0.3'
+
+    // Основная зависимость Selenium
+    implementation 'org.seleniumhq.selenium:selenium-java:4.11.0'
 }
 
 test {
     useJUnitPlatform()
-    // Если нужно использовать headless режим, добавьте это свойство при запуске тестов
     systemProperty 'selenide.headless', System.getProperty('selenide.headless')
 }
